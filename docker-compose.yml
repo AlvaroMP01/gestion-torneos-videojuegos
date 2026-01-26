@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # --- SERVICIO DE BASE DE DATOS ---
+  db:
+    image: mysql:8.0
+    container_name: torneos_mysql
+    restart: always
+    env_file: .env  # Lee el archivo .env
+    environment:
+      # Se pasan las variables a la imagen de MySQL
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306" # Mapea el puerto 3306 del contenedor al PC
+    volumes:
+      - mysql_data:/var/lib/mysql # Esto hace que los datos no se borren al apagar docker
+
+  # --- SERVICIO DE BACKEND (API) ---
+  api:
+    build: ./backend # Construye la imagen usando el Dockerfile del backend
+    container_name: torneos_api
+    restart: on-failure
+    env_file: .env
+    ports:
+      - "5000:5000" # Mapea el puerto 5000 del contenedor al 5000 al PC
+    depends_on:
+      - db # Espera a que el servicio 'db' arranque antes de iniciar este (aunque no garantiza que MySQL esté listo al 100%)
+    volumes:
+      - ./backend:/app # Vincula la carpeta local con la del contenedor. Si se edita código, cambia en el contenedor.
+
+# Definir el volumen para persistencia de datos
+volumes:
+  mysql_data:
