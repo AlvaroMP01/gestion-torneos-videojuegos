@@ -1,11 +1,11 @@
-# 🏆 Plataforma de Gestión de Torneos de Videojuegos (Valorant)
+# Plataforma de Gestión de Torneos de Videojuegos (Valorant)
 
 ## 1. Descripción del Proyecto
 Este proyecto consiste en el desarrollo de una aplicación web para la gestión integral de torneos de videojuegos online (centrado en Valorant). El objetivo principal es solucionar el desorden actual en la organización de competiciones amateurs, las cuales suelen gestionarse de forma improvisada mediante redes sociales.
 
 La plataforma centraliza la información, facilitando la inscripción de equipos, la gestión de roles (capitanes, administradores) y el seguimiento de resultados y estadísticas en tiempo real mediante una arquitectura moderna y escalable.
 
-## 2. Arquitectura y Tecnologías 🛠️
+## 2. Arquitectura y Tecnologías
 El proyecto sigue una arquitectura **Cliente-Servidor (RESTful)** contenerizada, separando claramente la lógica de negocio de la interfaz de usuario.
 
 ### Stack Tecnológico
@@ -62,7 +62,7 @@ El código está organizado siguiendo las buenas prácticas de separación de re
         └── pages/           # Vistas principales
 ```
 
-## 4. Modelo de Datos (ERD) 💾
+## 4. Modelo de Datos (ERD)
 
 * **El sistema gestiona las siguientes entidades principales:**
 
